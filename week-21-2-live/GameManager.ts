@@ -6,7 +6,17 @@ interface Game {
 }
 
 export class GameManager {
+    private static instance: GameManager;
     private games: Game[] = [];
+
+    private constructor() {}
+
+    public static getInstance(): GameManager {
+        if (!this.instance) {
+            this.instance = new GameManager();
+        }
+        return this.instance;
+    }
 
     public addGame(game: Game) {
         this.games.push(game);
