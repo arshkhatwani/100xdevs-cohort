@@ -2,7 +2,7 @@
   "name": "week-21-2-live",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx tsx watch index.ts"
