@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 interface User {
     name: string;
     age: number;
@@ -58,5 +60,21 @@ function handleEvent(event: ExcludeEvent) {
     console.log("handling event:" + event);
 }
 
-handleEvent("mousemove");
-handleEvent("scroll");
+// handleEvent("mousemove");
+// handleEvent("scroll");
+
+// Zod is used for runtime validation
+const userProfileSchema = z.object({
+    name: z.string().min(1, { message: "Name cannot be empty" }),
+    email: z.string().email({ message: "Invalid email address" }),
+    age: z.number().min(18, { message: "Age must be at least 18" }),
+});
+
+const sampleUser1 = { name: "John", email: "a@a.com", age: 16 };
+const sampleUser2 = { name: "Mary", email: "a@a.com", age: 20 };
+
+const result1 = userProfileSchema.safeParse(sampleUser1);
+const result2 = userProfileSchema.safeParse(sampleUser2);
+
+// console.log(result1.success ? "valid" : "invalid");
+// console.log(result2.success ? "valid" : "invalid");
