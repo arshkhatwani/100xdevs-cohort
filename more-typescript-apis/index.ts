@@ -30,3 +30,17 @@ const conf: Readonly<Config> = {
 };
 // Readonly ensures compile time checking for an object that should not be altered after initialization
 // console.log(conf);
+
+interface UserDetails {
+    id: string;
+    name: string;
+}
+
+// type Users = { [key: string]: UserDetails }; // This can also be written as
+type Users = Record<string, UserDetails>;
+
+const users: Users = {
+    abc123: { id: "abc123", name: "John Doe" },
+    xyz789: { id: "xyz789", name: "Jane Doe" },
+};
+// console.log(users);
