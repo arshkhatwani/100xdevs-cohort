@@ -50,3 +50,13 @@ usersMap.set("abc123", { id: "abc123", name: "John Doe" });
 usersMap.set("xyz789", { id: "xyz789", name: "Jane Doe" });
 // console.log(usersMap);
 // console.log(usersMap.get("abc123"));
+
+type SomeEvent = "scroll" | "click" | "mousemove";
+type ExcludeEvent = Exclude<SomeEvent, "click">;
+
+function handleEvent(event: ExcludeEvent) {
+    console.log("handling event:" + event);
+}
+
+handleEvent("mousemove");
+handleEvent("scroll");
