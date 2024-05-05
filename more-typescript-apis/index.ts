@@ -17,4 +17,16 @@ function displayUserProfile(user: UserProfile) {
 function updateUser(updatedProps: UpdateProps) {
     console.log(updatedProps);
 }
-updateUser({ name: "John", email: "a@a.com", createdAt: new Date() });
+// updateUser({ name: "John", email: "a@a.com", createdAt: new Date() });
+
+interface Config {
+    readonly endpoint: string;
+    readonly port: number;
+}
+
+const conf: Readonly<Config> = {
+    endpoint: "localhost",
+    port: 3000,
+};
+// Readonly ensures compile time checking for an object that should not be altered after initialization
+// console.log(conf);
